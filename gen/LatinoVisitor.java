@@ -52,6 +52,30 @@ public interface LatinoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpresion(LatinoParser.ExpresionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LatinoParser#acadena_funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAcadena_funcion(LatinoParser.Acadena_funcionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LatinoParser#alogico_funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlogico_funcion(LatinoParser.Alogico_funcionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LatinoParser#anumero_funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnumero_funcion(LatinoParser.Anumero_funcionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LatinoParser#tipo_funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo_funcion(LatinoParser.Tipo_funcionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LatinoParser#literal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -268,11 +292,11 @@ public interface LatinoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitModulo(LatinoParser.ModuloContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LatinoParser#fin_de_bloque}.
+	 * Visit a parse tree produced by {@link LatinoParser#incluir_modulo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFin_de_bloque(LatinoParser.Fin_de_bloqueContext ctx);
+	T visitIncluir_modulo(LatinoParser.Incluir_moduloContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LatinoParser#comentario}.
 	 * @param ctx the parse tree
