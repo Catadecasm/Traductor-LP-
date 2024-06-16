@@ -23,6 +23,13 @@ RETORNAR: 'retornar';
 ACADENA: 'acadena';
 ALOGICO: 'alogico';
 ANUMERO: 'anumero';
+TIPO: 'tipo';
+IMPRIMIR: 'imprimir';
+ESCRIBIR: 'escribir';
+PONER: 'poner';
+IMPRIMIRF: 'imprimirf';
+LEER: 'leer';
+LIMPIAR: 'limpiar';
 
 // Identificadores y literales
 IDENTIFICADOR: [a-zA-Z_][a-zA-Z_0-9]* | [\u00C0-\u017F]+ ;
@@ -97,6 +104,7 @@ instruccion
     | for_rango_estructura
     | repetir_estructura
     | estructura_control
+    | entrada_salida
     ;
 
 asignacion
@@ -118,6 +126,7 @@ expresion
     | diccionario
     | acceso_lista
     | acceso_miembro
+    | tipo_funcion
     | PARENIZQ expresion PARENDER
     | IDENTIFICADOR
     | acadena_funcion
@@ -137,6 +146,10 @@ alogico_funcion
 
 anumero_funcion
     : ANUMERO PARENIZQ expresion PARENDER
+    ;
+
+tipo_funcion
+    : TIPO PARENIZQ expresion PARENDER
     ;
 
 literal
@@ -306,8 +319,12 @@ continuar
 
 // Entrada y salida
 entrada_salida
-    : LEER PARENIZQ PARENDER
-    | IMPRIMIR PARENIZQ argumentos? PARENDER
+    : IMPRIMIR PARENIZQ argumentos? PARENDER
+    | ESCRIBIR PARENIZQ argumentos? PARENDER
+    | PONER PARENIZQ argumentos? PARENDER
+    | IMPRIMIRF PARENIZQ argumentos? PARENDER
+    | LEER PARENIZQ PARENDER
+    | LIMPIAR PARENIZQ PARENDER
     ;
 
 // Excepciones
@@ -317,12 +334,12 @@ excepcion
 
 // Módulos y paquetes
 modulo
-    : INCLUIR PARENIZQ CADENA PARENDER
+    : incluir_modulo
     | RETORNAR diccionario
     ;
 
-fin_de_bloque
-    : FIN
+incluir_modulo
+    : INCLUIR PARENIZQ CADENA PARENDER
     ;
 
 // Comentarios
@@ -338,8 +355,6 @@ REAL_TIPO: 'real' ;
 CADENA_TIPO: 'cadena' ;
 BOOLEANO_TIPO: 'booleano' ;
 FUNCION: 'funcion' ;
-LEER: 'leer' ;
-IMPRIMIR: 'imprimir' ;
 TRY: 'try' ;
 EXCEPT: 'except' ;
 IMPORTAR: 'importar' ;
@@ -347,3 +362,4 @@ RETORNO: 'retorno' ;
 CONTINUAR: 'continuar' ;
 VERDADERO: 'Verdadero' ;
 FALSO: 'Falso' ;
+
